@@ -10,12 +10,12 @@ pipeline {
         }
 		stage('Build') {
 		      steps{
-			     bat Build.bat
+			     bat 'Build.bat'
 			  }
 		}
 		stage('config'){
 		    steps{
-		        bat Config.bat
+		        bat 'Config.bat'
 			    
 		    }
 		  }
@@ -27,9 +27,9 @@ pipeline {
 				     def pipeline = load 'GroovyFile.groovy'
 				     def flag = pipeline.JsonFile()
 				     if(flag == "Y")
-				     bat Stage.bat
+				     bat 'Stage.bat'
 				     else
-					  bat Deploy.bat
+					  bat 'Deploy.bat'
 				     
 			     }
 			     
