@@ -1,0 +1,10 @@
+{
+  [
+  "Branch":"Development",
+  "Deploy":"Y"
+  ],
+  [
+    "Branch":"Production",
+    "Deploy":"N"
+  ]
+}
