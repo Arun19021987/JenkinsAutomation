@@ -12,7 +12,7 @@ def out = json.parse(fileread)
 def deploy
 out.each { 
 	key,value->
-	if(key == "Deploy" && value="Y")
+	if(key == "Deploy" && value=="Y")
 	{
 	     deploy = 'Y'
 	}
