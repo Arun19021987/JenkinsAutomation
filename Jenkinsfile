@@ -29,7 +29,26 @@ pipeline {
 		  }
 		 stage('Deploy') {
 		     steps{
-		         bat Deploy.bat
+		         
+			     script{
+				     import groovy.json.*
+					     @Grab("org.codehaus.groovy:groovy-json")
+				     
+				     def filePath = 'Jenkins.json'
+				     def file = new File(filePath)
+				     def json = new JsonSlurper()
+
+					def out = json.parse(file)
+				     out.each{
+					     key,value->
+					     if(key=="Branch" && value == "Production")
+					       bat Stage.bat
+					     else
+						bat Deploy.bat     
+					     
+				     }
+			     }
+			     
 		     }
 		 }
 		}
