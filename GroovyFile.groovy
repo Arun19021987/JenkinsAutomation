@@ -2,7 +2,7 @@
 import groovy.json.*
 //@Grab("org.codehaus.groovy:groovy-json")
 
-def JsonFile()
+String JsonFile()
 {
 def filepath="Jenkins.json"
 def fileread = new File(filepath)
@@ -19,5 +19,6 @@ out.each {
 	
 	
 }
+	return deploy
 }
-return deploy
+return this
