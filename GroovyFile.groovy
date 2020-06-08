@@ -2,9 +2,9 @@
 import groovy.json.*
 //@Grab("org.codehaus.groovy:groovy-json")
 
-String JsonFile()
+String JsonFile(String FileName)
 {
-def filepath="Jenkins.json"
+def filepath=FileName
 def fileread = new File(filepath)
 def json = new JsonSlurper()
 
