@@ -3,22 +3,33 @@ pipeline {
     stages {
         stage('Git-Checkout') {
             steps {
-                git changelog: false, poll: false, url: 'https://github.com/Arun19021987/JenkinsAutomation.git'
+		    script{
+			    checkout([$class: 'GitSCM', 
+			    branches: [[name: '*/master']], 
+			    doGenerateSubmoduleConfigurations: false, 
+			    extensions: [[$class: 'CleanCheckout']], 
+			    submoduleCfg: [], 
+			    userRemoteConfigs: [[credentialsId: 'git-credentials', url: 'https://github.com/Arun19021987/JenkinsAutomation.git']]
+			])
+		    }
+		    
+		    //git changelog: false, poll: false, url: 'https://github.com/Arun19021987/JenkinsAutomation.git'
             }
         }
 		stage('Build') {
 		      steps{
-			     bat label: '', script: 'C:/tibco/tra/5.7/bin/buildear -x -s -ear /Deployment/JenkinsDemo.archive -o F:/Jenkins/JenkinsDemo.ear -p F:/TibcoWS/JenkinsDemo'
+			     bat Build.bat
 			  }
 		}
 		stage('config'){
 		    steps{
-		        bat label: '', script: 'C:/tibco/tra/5.7/bin/AppManage -export -out F:/Jenkins/JenkinsDemo.xml  -ear F:/Jenkins/JenkinsDemo.ear'
+		        bat Config.bat
+			    
 		    }
 		  }
 		 stage('Deploy') {
 		     steps{
-		         bat label: '', script: 'C:/tibco/tra/5.7/bin/AppManage -deploy -ear F:/Jenkins/JenkinsDemo.ear -deployconfig F:/Jenkins/JenkinsDemo.xml -domain arun -user arun -pw arun'
+		         bat Deploy.bat
 		     }
 		 }
 		}
