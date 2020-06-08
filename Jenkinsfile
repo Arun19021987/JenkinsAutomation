@@ -31,7 +31,6 @@ pipeline {
 		     steps{
 		         
 			     script{
-				     import groovy.json.*
 					     @Grab("org.codehaus.groovy:groovy-json")
 				     
 				     def filePath = 'Jenkins.json'
