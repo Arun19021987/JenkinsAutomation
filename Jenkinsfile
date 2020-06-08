@@ -23,9 +23,10 @@ pipeline {
 		     steps{
 		         
 			     script{
-					     
+					def rootDir=pwd() 
+				     String jsonPath=rootDir + "/Jenkins.json"
 				     def pipeline = load 'GroovyFile.groovy'
-				     def flag = pipeline.JsonFile()
+				     def flag = pipeline.JsonFile(jsonPath)
 				     if(flag == "Y")
 				     bat 'Stage.bat'
 				     else
