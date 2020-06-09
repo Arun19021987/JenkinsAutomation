@@ -17,12 +17,24 @@ pipeline {
         }
 		stage('Build') {
 		      steps{
-			     bat 'Build.bat'
+			   ant {
+				    target('buildear')
+				   
+				    buildFile('Build.xml')
+				    
+				    antInstallation('Ant')
+				}
 			  }
 		}
 		stage('config'){
 		    steps{
-		        bat 'Config.bat'
+		        ant {
+				    targets(['config', 'Appconfig'])
+				   
+				    buildFile('Build.xml')
+				    
+				    antInstallation('Ant')
+				}
 			    
 		    }
 		  }
@@ -34,10 +46,24 @@ pipeline {
 				     String jsonPath=rootDir + "/Jenkins.json"
 				     def pipeline = load 'GroovyFile.groovy'
 				     def flag = pipeline.JsonFile(jsonPath)
-				     if(flag == "Y")
-				     bat 'Stage.bat'
-				     else
-					  bat 'Deploy.bat'
+				     if(flag == "Y"){
+						     ant {
+							    target('Staging')
+
+							    buildFile('Build.xml')
+
+							    antInstallation('Ant')
+						}
+				     }
+				     else{
+					  ant {
+							    target('Deploy')
+
+							    buildFile('Build.xml')
+
+							    antInstallation('Ant')
+						}
+				     }
 				     
 			     }
 			     
