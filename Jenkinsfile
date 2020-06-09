@@ -1,11 +1,14 @@
 pipeline {
     agent any
+	customWorkspace 'F:/JenkinsWorkSpace'
     stages {
         stage('Git-Checkout') {
             steps {
-		    
+		   
+			     
 		    
 		    git changelog: false, poll: false, url: 'https://github.com/Arun19021987/JenkinsAutomation.git'
+		   
             }
         }
 		stage('Build') {
