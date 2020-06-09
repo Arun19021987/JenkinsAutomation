@@ -1,6 +1,8 @@
 pipeline {
-    agent any
+	agent{
+		
 	customWorkspace 'F:/JenkinsWorkSpace'
+	}
     stages {
         stage('Git-Checkout') {
             steps {
