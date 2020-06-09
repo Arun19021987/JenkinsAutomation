@@ -17,25 +17,16 @@ pipeline {
         }
 		stage('Build') {
 		      steps{
-			   ant {
-				    target('buildear')
-				    prop('logging', 'info')
-           			    props('test.threads': 10, 'input.status': 'release')
-				    buildFile('Build.xml')
-				    
-				    antInstallation('Ant')
+			  withAnt(installation: 'Ant', jdk: 'JDK') {
+				    bat "ant buildear"
 				}
 			  }
 		}
 		stage('config'){
 		    steps{
-		        ant {
-				    targets(['config', 'Appconfig'])
-				    prop('logging', 'info')
-           			    props('test.threads': 10, 'input.status': 'release')
-				    buildFile('Build.xml')
-				    
-				    antInstallation('Ant')
+		        withAnt(installation: 'Ant', jdk: 'JDK') {
+				    bat "ant config"
+				    bat "ant Appconfig"
 				}
 			    
 		    }
@@ -49,24 +40,14 @@ pipeline {
 				     def pipeline = load 'GroovyFile.groovy'
 				     def flag = pipeline.JsonFile(jsonPath)
 				     if(flag == "Y"){
-						     ant {
-							    target('Staging')
-                                                            prop('logging', 'info')
-           			                            props('test.threads': 10, 'input.status': 'release')
-							    buildFile('Build.xml')
-
-							    antInstallation('Ant')
-						}
+						     withAnt(installation: 'Ant', jdk: 'JDK') {
+							    bat "ant Staging"
+							}
 				     }
 				     else{
-					  ant {
-							    target('Deploy')
-                                                            prop('logging', 'info')
-           			                            props('test.threads': 10, 'input.status': 'release')
-							    buildFile('Build.xml')
-
-							    antInstallation('Ant')
-						}
+					  withAnt(installation: 'Ant', jdk: 'JDK') {
+							    bat "ant Deploy"
+							}
 				     }
 				     
 			     }
