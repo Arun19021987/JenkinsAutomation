@@ -1,0 +1,67 @@
+<project name="buildear" default="main" basedir=".">
+
+     <target name="main">
+	     <antcall target="buildear"/>
+		 <antcall target="config"/>
+		 <antcall target="Appconfig"/>
+	     <antcall target="Staging"/>
+		 <antcall target="Deploy"/>
+	 </target>
+	 
+	 
+    <target name="buildear">
+   <exec executable="buildear.exe" dir="C:/tibco/tra/5.7/bin" resolveexecutable="true">
+      <arg line="-x"/>
+      <arg value="-v"/>
+      <arg line="-ear /Deployment/JenkinsDemo.archive"/>
+      <arg line="-o F:/JenkinsWorkSpace/JenkinsDemo.ear"/>
+      <arg line="-p F:\JenkinsWorkSpace\JenkinsDemo"/>
+   </exec>
+</target>
+
+<target name="config">
+   <exec executable="AppManage.exe" dir="C:/tibco/tra/5.7/bin" resolveexecutable="true">
+      <arg line="-export"/>
+      <arg line="-out F:\JenkinsWorkSpace\JenkinsDemo.xml"/>
+      <arg line="-ear F:\JenkinsWorkSpace\JenkinsDemo.ear"/>
+     
+   </exec>
+</target>
+
+<target name="Appconfig">
+   <exec executable="AppManage.exe" dir="C:/tibco/tra/5.7/bin" resolveexecutable="true">
+      <arg line="-export"/>
+      <arg line="-out F:\JenkinsWorkSpace\JenkinsDemo_Deployed.xml"/>
+      <arg line="-app JenkinsDemo"/>
+	   <arg line="-domain arun"/>
+	    <arg line="-user arun"/>
+		 <arg line="-pw arun"/>
+     
+   </exec>
+</target>
+
+<target name="Staging">
+   <exec executable="AppManage.exe" dir="C:/tibco/tra/5.7/bin" resolveexecutable="true">
+      <arg line="-config"/>
+      <arg line="-ear F:\JenkinsWorkSpace\JenkinsDemo.ear"/>
+      <arg line="-deployconfig F:\JenkinsWorkSpace\JenkinsDemo.xml"/>
+	  <arg line="-app JenkinsDemo"/>
+	   <arg line="-domain arun"/>
+	    <arg line="-user arun"/>
+		 <arg line="-pw arun"/>
+     
+   </exec>
+</target>
+
+<target name="Deploy">
+   <exec executable="AppManage.exe" dir="C:/tibco/tra/5.7/bin" resolveexecutable="true">
+      <arg line="-deploy"/>
+      <arg line="-app JenkinsDemo"/>
+	   <arg line="-domain arun"/>
+	    <arg line="-user arun"/>
+		 <arg line="-pw arun"/>
+          <arg line="-nostart"/>
+   </exec>
+</target>
+
+</project>
