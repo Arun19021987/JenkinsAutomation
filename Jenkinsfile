@@ -19,7 +19,8 @@ pipeline {
 		      steps{
 			   ant {
 				    target('buildear')
-				   
+				    prop('logging', 'info')
+           			    props('test.threads': 10, 'input.status': 'release')
 				    buildFile('Build.xml')
 				    
 				    antInstallation('Ant')
@@ -30,7 +31,8 @@ pipeline {
 		    steps{
 		        ant {
 				    targets(['config', 'Appconfig'])
-				   
+				    prop('logging', 'info')
+           			    props('test.threads': 10, 'input.status': 'release')
 				    buildFile('Build.xml')
 				    
 				    antInstallation('Ant')
@@ -49,7 +51,8 @@ pipeline {
 				     if(flag == "Y"){
 						     ant {
 							    target('Staging')
-
+                                                            prop('logging', 'info')
+           			                            props('test.threads': 10, 'input.status': 'release')
 							    buildFile('Build.xml')
 
 							    antInstallation('Ant')
@@ -58,7 +61,8 @@ pipeline {
 				     else{
 					  ant {
 							    target('Deploy')
-
+                                                            prop('logging', 'info')
+           			                            props('test.threads': 10, 'input.status': 'release')
 							    buildFile('Build.xml')
 
 							    antInstallation('Ant')
