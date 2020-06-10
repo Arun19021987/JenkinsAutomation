@@ -19,7 +19,7 @@
 	 <property name="app.buildear.path" value="C:/tibco/tra/5.7/bin"/>
 	 <property name="archive.path" value="/Deployment/JenkinsDemo.archive"/>
 	  <property name="ear.path" value="JenkinsDemo.ear"/>
-	  <property name="project.path" value="./JenkinsDemo"/>
+	  <property name="project.path" value="JenkinsDemo"/>
 	  <property name="xml.path" value="JenkinsDemo.xml"/>
 	  <property name="deployed.xml.path" value="JenkinsDemo_Deployed.xml"/>
 	  
@@ -44,7 +44,7 @@
  <property name="app.buildear.path" value="C:/tibco/tra/5.7/bin"/>
 	 <property name="archive.path" value="/Deployment/JenkinsDemo.archive"/>
 	  <property name="ear.path" value="JenkinsDemo.ear"/>
-	  <property name="project.path" value="./JenkinsDemo"/>
+	  <property name="project.path" value="JenkinsDemo"/>
 	  <property name="xml.path" value="JenkinsDemo.xml"/>
 	  <property name="deployed.xml.path" value="JenkinsDemo_Deployed.xml"/>
 	  
@@ -62,7 +62,7 @@
  <property name="app.buildear.path" value="C:/tibco/tra/5.7/bin"/>
 	 <property name="archive.path" value="/Deployment/JenkinsDemo.archive"/>
 	  <property name="ear.path" value="JenkinsDemo.ear"/>
-	  <property name="project.path" value="./JenkinsDemo"/>
+	  <property name="project.path" value="JenkinsDemo"/>
 	  <property name="xml.path" value="JenkinsDemo.xml"/>
 	  <property name="deployed.xml.path" value="JenkinsDemo_Deployed.xml"/>
 	  
@@ -83,7 +83,7 @@
  <property name="app.buildear.path" value="C:/tibco/tra/5.7/bin"/>
 	 <property name="archive.path" value="/Deployment/JenkinsDemo.archive"/>
 	  <property name="ear.path" value="JenkinsDemo.ear"/>
-	  <property name="project.path" value="./JenkinsDemo"/>
+	  <property name="project.path" value="JenkinsDemo"/>
 	  <property name="xml.path" value="JenkinsDemo.xml"/>
 	  <property name="deployed.xml.path" value="JenkinsDemo_Deployed.xml"/>
 	  
@@ -105,7 +105,7 @@
  <property name="app.buildear.path" value="C:/tibco/tra/5.7/bin"/>
 	 <property name="archive.path" value="/Deployment/JenkinsDemo.archive"/>
 	  <property name="ear.path" value="JenkinsDemo.ear"/>
-	  <property name="project.path" value="./JenkinsDemo"/>
+	  <property name="project.path" value="JenkinsDemo"/>
 	  <property name="xml.path" value="JenkinsDemo.xml"/>
 	  <property name="deployed.xml.path" value="JenkinsDemo_Deployed.xml"/>
 	  
