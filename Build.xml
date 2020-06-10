@@ -33,7 +33,7 @@
 		 <mkdir dir="${ear.dir}"/>
 		 <mkdir dir="${xml.dir}"/>
 		 
-   <exec executable="${app.buildear.path}/buildear.exe"  resolveexecutable="true">
+   <exec executable="${app.buildear.path}/buildear.exe"  dir="." resolveexecutable="true">
       <arg line="-x"/>
       <arg value="-v"/>
       <arg line="-ear ${archive.path} "/>
