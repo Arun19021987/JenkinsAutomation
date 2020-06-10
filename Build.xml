@@ -31,7 +31,7 @@
 		 <mkdir dir="${ear.dir}"/>
 		 <mkdir dir="${xml.dir}"/>
 		 
-   <exec executable="buildear.exe" dir="${app.buildear.path}" resolveexecutable="true">
+   <exec executable="buildear.exe" dir="${app.buildear.path}" resolveexecutable="false">
       <arg line="-x"/>
       <arg value="-v"/>
       <arg line="-ear ${archive.path} "/>
@@ -50,7 +50,7 @@
 	  
 	  <property name="ear.dir" value="./ear"/>
       <property name="xml.dir" value="./xml"/>
-   <exec executable="AppManage.exe" dir="${app.buildear.path}" resolveexecutable="true">
+   <exec executable="AppManage.exe" dir="${app.buildear.path}" resolveexecutable="false">
       <arg line="-export"/>
       <arg line="-out ${xml.dir}/${xml.path}"/>
       <arg line="-ear ${ear.dir}/${ear.path}"/>
@@ -68,7 +68,7 @@
 	  
 	  <property name="ear.dir" value="./ear"/>
       <property name="xml.dir" value="./xml"/>
-   <exec executable="AppManage.exe" dir="${app.buildear.path}" resolveexecutable="true">
+   <exec executable="AppManage.exe" dir="${app.buildear.path}" resolveexecutable="false">
       <arg line="-export"/>
       <arg line="-out ${xml.dir}/${deplyed.xml.path}"/>
       <arg line="-app JenkinsDemo"/>
@@ -89,7 +89,7 @@
 	  
 	  <property name="ear.dir" value="./ear"/>
       <property name="xml.dir" value="./xml"/>
-   <exec executable="AppManage.exe" dir="${app.buildear.path}" resolveexecutable="true">
+   <exec executable="AppManage.exe" dir="${app.buildear.path}" resolveexecutable="false">
       <arg line="-config"/>
       <arg line="-ear ${ear.dir}/${ear.path}"/>
       <arg line="-deployconfig ${xml.dir}/${xml.path}"/>
@@ -111,7 +111,7 @@
 	  
 	  <property name="ear.dir" value="./ear"/>
       <property name="xml.dir" value="./xml"/>
-   <exec executable="AppManage.exe" dir="${app.buildear.path}" resolveexecutable="true">
+   <exec executable="AppManage.exe" dir="${app.buildear.path}" resolveexecutable="false">
       <arg line="-deploy"/>
       <arg line="-app JenkinsDemo"/>
 	   <arg line="-domain arun"/>
