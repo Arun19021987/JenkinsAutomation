@@ -15,6 +15,8 @@
 	 
 	 
     <target name="buildear">
+	
+	
 	 
 	 <property name="app.buildear.path" value="C:/tibco/tra/5.7/bin"/>
 	 <property name="archive.path" value="/Deployment/JenkinsDemo.archive"/>
@@ -31,7 +33,7 @@
 		 <mkdir dir="${ear.dir}"/>
 		 <mkdir dir="${xml.dir}"/>
 		 
-   <exec executable="buildear.exe" dir="${app.buildear.path}" resolveexecutable="false">
+   <exec executable="${app.buildear.path}/buildear.exe"  resolveexecutable="true">
       <arg line="-x"/>
       <arg value="-v"/>
       <arg line="-ear ${archive.path} "/>
@@ -44,13 +46,13 @@
  <property name="app.buildear.path" value="C:/tibco/tra/5.7/bin"/>
 	 <property name="archive.path" value="/Deployment/JenkinsDemo.archive"/>
 	  <property name="ear.path" value="JenkinsDemo.ear"/>
-	  <property name="project.path" value="JenkinsDemo"/>
+	  <property name="project.path" value="./JenkinsDemo"/>
 	  <property name="xml.path" value="JenkinsDemo.xml"/>
 	  <property name="deployed.xml.path" value="JenkinsDemo_Deployed.xml"/>
 	  
 	  <property name="ear.dir" value="./ear"/>
       <property name="xml.dir" value="./xml"/>
-   <exec executable="AppManage.exe" dir="${app.buildear.path}" resolveexecutable="false">
+   <exec executable="${app.buildear.path}/AppManage.exe"  resolveexecutable="true">
       <arg line="-export"/>
       <arg line="-out ${xml.dir}/${xml.path}"/>
       <arg line="-ear ${ear.dir}/${ear.path}"/>
@@ -62,13 +64,13 @@
  <property name="app.buildear.path" value="C:/tibco/tra/5.7/bin"/>
 	 <property name="archive.path" value="/Deployment/JenkinsDemo.archive"/>
 	  <property name="ear.path" value="JenkinsDemo.ear"/>
-	  <property name="project.path" value="JenkinsDemo"/>
+	  <property name="project.path" value="./JenkinsDemo"/>
 	  <property name="xml.path" value="JenkinsDemo.xml"/>
 	  <property name="deployed.xml.path" value="JenkinsDemo_Deployed.xml"/>
 	  
 	  <property name="ear.dir" value="./ear"/>
       <property name="xml.dir" value="./xml"/>
-   <exec executable="AppManage.exe" dir="${app.buildear.path}" resolveexecutable="false">
+   <exec executable="${app.buildear.path}/AppManage.exe"  resolveexecutable="true">
       <arg line="-export"/>
       <arg line="-out ${xml.dir}/${deplyed.xml.path}"/>
       <arg line="-app JenkinsDemo"/>
@@ -83,13 +85,13 @@
  <property name="app.buildear.path" value="C:/tibco/tra/5.7/bin"/>
 	 <property name="archive.path" value="/Deployment/JenkinsDemo.archive"/>
 	  <property name="ear.path" value="JenkinsDemo.ear"/>
-	  <property name="project.path" value="JenkinsDemo"/>
+	  <property name="project.path" value="./JenkinsDemo"/>
 	  <property name="xml.path" value="JenkinsDemo.xml"/>
 	  <property name="deployed.xml.path" value="JenkinsDemo_Deployed.xml"/>
 	  
 	  <property name="ear.dir" value="./ear"/>
       <property name="xml.dir" value="./xml"/>
-   <exec executable="AppManage.exe" dir="${app.buildear.path}" resolveexecutable="false">
+   <exec executable="${app.buildear.path}/AppManage.exe"  resolveexecutable="true">
       <arg line="-config"/>
       <arg line="-ear ${ear.dir}/${ear.path}"/>
       <arg line="-deployconfig ${xml.dir}/${xml.path}"/>
@@ -105,13 +107,13 @@
  <property name="app.buildear.path" value="C:/tibco/tra/5.7/bin"/>
 	 <property name="archive.path" value="/Deployment/JenkinsDemo.archive"/>
 	  <property name="ear.path" value="JenkinsDemo.ear"/>
-	  <property name="project.path" value="JenkinsDemo"/>
+	  <property name="project.path" value="./JenkinsDemo"/>
 	  <property name="xml.path" value="JenkinsDemo.xml"/>
 	  <property name="deployed.xml.path" value="JenkinsDemo_Deployed.xml"/>
 	  
 	  <property name="ear.dir" value="./ear"/>
       <property name="xml.dir" value="./xml"/>
-   <exec executable="AppManage.exe" dir="${app.buildear.path}" resolveexecutable="false">
+   <exec executable="${app.buildear.path}/AppManage.exe"  resolveexecutable="true">
       <arg line="-deploy"/>
       <arg line="-app JenkinsDemo"/>
 	   <arg line="-domain arun"/>
