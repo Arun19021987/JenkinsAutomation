@@ -2,12 +2,21 @@
 
      <property name="app.buildear.path" value="C:/tibco/tra/5.7/bin"/>
 	 <property name="archive.path" value="/Deployment/JenkinsDemo.archive"/>
-	  <property name="ear.path" value="./JenkinsDemo.ear"/>
+	  <property name="ear.path" value="JenkinsDemo.ear"/>
 	  <property name="project.path" value="./JenkinsDemo"/>
-	  <property name="xml.path" value="./JenkinsDemo.xml"/>
-	  <property name="deployed.xml.path" value="./JenkinsDemo_Deployed.xml"/>
+	  <property name="xml.path" value="JenkinsDemo.xml"/>
+	  <property name="deployed.xml.path" value="JenkinsDemo_Deployed.xml"/>
 	  
-	 <target name="main">
+	  <property name="ear.dir" value="./ear"/>
+      <property name="xml.dir" value="./xml"/>
+	  
+	<target name="main">
+	
+	     <delete dir="${ear.dir}"/>
+		 <delete dir="${xml.dir}"/>
+		 <mkdir dir="${ear.dir}"/>
+		 <mkdir dir="${xml.dir}"/>
+		 
 	     <antcall target="buildear"/>
 		 <antcall target="config"/>
 		 <antcall target="Appconfig"/>
@@ -21,7 +30,7 @@
       <arg line="-x"/>
       <arg value="-v"/>
       <arg line="-ear ${archive.path} "/>
-      <arg line="-o ${ear.path}"/>
+      <arg line="-o ${ear.dir}/${ear.path}"/>
       <arg line="-p ${project.path}"/>
    </exec>
 </target>
@@ -29,8 +38,8 @@
 <target name="config">
    <exec executable="AppManage.exe" dir="${app.buildear.path}" resolveexecutable="true">
       <arg line="-export"/>
-      <arg line="-out ${xml.path}"/>
-      <arg line="-ear ${ear.path}"/>
+      <arg line="-out ${xml.dir}/${xml.path}"/>
+      <arg line="-ear ${ear.dir}/${ear.path}"/>
      
    </exec>
 </target>
@@ -38,7 +47,7 @@
 <target name="Appconfig">
    <exec executable="AppManage.exe" dir="${app.buildear.path}" resolveexecutable="true">
       <arg line="-export"/>
-      <arg line="-out ${deplyed.xml.path}"/>
+      <arg line="-out ${xml.dir}/${deplyed.xml.path}"/>
       <arg line="-app JenkinsDemo"/>
 	   <arg line="-domain arun"/>
 	    <arg line="-user arun"/>
@@ -50,8 +59,8 @@
 <target name="Staging">
    <exec executable="AppManage.exe" dir="${app.buildear.path}" resolveexecutable="true">
       <arg line="-config"/>
-      <arg line="-ear ${ear.path}"/>
-      <arg line="-deployconfig ${xml.path}"/>
+      <arg line="-ear ${ear.dir}/${ear.path}"/>
+      <arg line="-deployconfig ${xml.dir}/${xml.path}"/>
 	  <arg line="-app JenkinsDemo"/>
 	   <arg line="-domain arun"/>
 	    <arg line="-user arun"/>
