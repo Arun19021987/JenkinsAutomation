@@ -1,0 +1,92 @@
+<project name="buildear" default="main" basedir=".">
+
+    	 <property name="app.buildear.path" value="C:/tibco/tra/5.7/bin"/>
+	 <property name="archive.path" value="/Deployment/JenkinsDemo.archive"/>
+	  <property name="ear.path" value="F:/JenkinsWorkSpace/ear/JenkinsDemo.ear"/>
+	  <property name="project.path" value="F:/JenkinsWorkSpace/JenkinsDemo"/>
+	  <property name="xml.path" value="F:/JenkinsWorkSpace/xml/JenkinsDemo.xml"/>
+	  <property name="deployed.xml.path" value="F:/JenkinsWorkSpace/xml/JenkinsDemo_Deployed.xml"/>
+	   <property name="ear.dir" value="F:/JenkinsWorkSpace/ear"/>
+	    <property name="xml.dir" value="F:/JenkinsWorkSpace/xml"/>
+	<target name="main">
+	
+	    
+		 
+	     <antcall target="buildear"/>
+		 <antcall target="config"/>
+		 <antcall target="Appconfig"/>
+	     <antcall target="Staging"/>
+		 <antcall target="Deploy"/>
+	 </target>
+	 
+	 
+    <target name="buildear">
+	
+	
+	     <delete dir="${ear.dir}"/>
+		 <delete dir="${xml.dir}"/>
+		 <mkdir dir="${ear.dir}"/>
+		 <mkdir dir="${xml.dir}"/>
+	
+		 
+   <exec executable="buildear.exe" dir="${app.buildear.path}" resolveexecutable="true">
+      <arg line="-x"/>
+      <arg value="-v"/>
+      <arg line="-ear ${archive.path} "/>
+      <arg line="-o ${ear.path}"/>
+      <arg line="-p ${project.path}"/>
+   </exec>
+</target>
+
+<target name="config">
+ 
+	  
+   <exec executable="AppManage.exe" dir="${app.buildear.path}" resolveexecutable="true">
+      <arg line="-export"/>
+      <arg line="-out ${xml.path}"/>
+      <arg line="-ear ${ear.path}"/>
+     
+   </exec>
+</target>
+
+<target name="Appconfig">
+ 
+   <exec executable="AppManage.exe" dir="${app.buildear.path}" resolveexecutable="true">
+      <arg line="-export"/>
+      <arg line="-out ${deplyed.xml.path}"/>
+      <arg line="-app JenkinsDemo"/>
+	   <arg line="-domain arun"/>
+	    <arg line="-user arun"/>
+		 <arg line="-pw arun"/>
+     
+   </exec>
+</target>
+
+<target name="Staging">
+ 
+   <exec executable="AppManage.exe" dir="${app.buildear.path}" resolveexecutable="true">
+      <arg line="-config"/>
+      <arg line="-ear ${ear.path}"/>
+      <arg line="-deployconfig ${xml.path}"/>
+	  <arg line="-app JenkinsDemo"/>
+	   <arg line="-domain arun"/>
+	    <arg line="-user arun"/>
+		 <arg line="-pw arun"/>
+     
+   </exec>
+</target>
+
+<target name="Deploy">
+ 
+	  
+   <exec executable="AppManage.exe" dir="${app.buildear.path}" resolveexecutable="true">
+      <arg line="-deploy"/>
+      <arg line="-app JenkinsDemo"/>
+	   <arg line="-domain arun"/>
+	    <arg line="-user arun"/>
+		 <arg line="-pw arun"/>
+          <arg line="-nostart"/>
+   </exec>
+</target>
+
+</project>
