@@ -67,7 +67,7 @@
    <exec executable="AppManage.exe" dir="${app.buildear.path}" resolveexecutable="true">
       <arg line="-config"/>
       <arg line="-ear ${ear.path}"/>
-      <arg line="-deployconfig ${xml.path}"/>
+      <arg line="-deployconfig ${LTEConfig}"/>
 	  <arg line="-app JenkinsDemo"/>
 	   <arg line="-domain arun"/>
 	    <arg line="-user arun"/>
