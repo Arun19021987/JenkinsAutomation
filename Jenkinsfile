@@ -33,7 +33,7 @@ pipeline {
 				     def flag = pipeline.JsonFile(jsonPath)
 				     if(flag == "Y"){
 						     withAnt(installation: 'Ant', jdk: 'JDK') {
-							    bat "ant -DLTEConfig=F:/JenkinsWorkSpace/JenkinsDemo/Environments/config.xml Staging"
+							    bat "ant -DLTEConfig=F:/JenkinsWorkSpace/JenkinsDemo/Environments/LTE/config.xml Staging"
 							}
 				     }
 				     else{
