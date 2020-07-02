@@ -17,7 +17,7 @@ pipeline {
 		stage('config'){
 		    steps{
 		        withAnt(installation: 'Ant', jdk: 'JDK') {
-				    bat "ant -DLTEConfig=F:/JenkinsWorkSpace/JenkinsDemo/Environments/config.xml config"
+				    bat "ant config"
 				    bat "ant Appconfig"
 				}
 			    
@@ -33,7 +33,7 @@ pipeline {
 				     def flag = pipeline.JsonFile(jsonPath)
 				     if(flag == "Y"){
 						     withAnt(installation: 'Ant', jdk: 'JDK') {
-							    bat "ant Staging"
+							    bat "ant -DLTEConfig=F:/JenkinsWorkSpace/JenkinsDemo/Environments/config.xml Staging"
 							}
 				     }
 				     else{
