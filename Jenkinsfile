@@ -17,7 +17,7 @@ pipeline {
 		stage('config'){
 		    steps{
 		        withAnt(installation: 'Ant', jdk: 'JDK') {
-				    bat "ant config"
+				    bat "ant -DLTEConfig=F:/JenkinsWorkSpace/JenkinsDemo/Environments/config.xml config"
 				    bat "ant Appconfig"
 				}
 			    
