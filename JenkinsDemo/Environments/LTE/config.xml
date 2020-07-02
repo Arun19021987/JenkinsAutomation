@@ -75,7 +75,7 @@
     </repoInstances>
     <services>
         <bw name="Process Archive.par">
-            <enabled>false</enabled>
+            <enabled>true</enabled>
             <bindings>
                 <binding name="Process Archive">
                     <machine>DESKTOP-ST88G3H</machine>
